@@ -1,0 +1,57 @@
+/**
+ * Page Size Selector Component Styles - MongoDB Branded
+ *
+ * CSS Module for the page size selector component.
+ */
+
+.pageSizeSelector {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  justify-content: center;
+}
+
+.label {
+  font-size: 0.95rem;
+  color: var(--mongodb-slate);
+  font-weight: 600;
+}
+
+.select {
+  padding: 0.625rem 1rem;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--mongodb-white);
+  color: var(--mongodb-slate);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.select:hover {
+  border-color: var(--color-text-secondary);
+}
+
+.select:focus {
+  outline: none;
+  border-color: var(--color-text-secondary);
+  box-shadow: 0 0 0 3px rgba(74, 85, 104, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .pageSizeSelector {
+    margin-bottom: 1.5rem;
+  }
+
+  .label {
+    font-size: 0.9rem;
+  }
+
+  .select {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.875rem;
+  }
+}
