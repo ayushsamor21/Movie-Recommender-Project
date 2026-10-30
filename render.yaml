@@ -1,0 +1,36 @@
+services:
+  - type: web
+    name: sample-mflix-api
+    runtime: node
+    plan: free
+    rootDir: sample-app-nodejs-mflix/server
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /
+    envVars:
+      - key: NODE_VERSION
+        value: 22.16.0
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        sync: false
+      - key: CORS_ORIGINS
+        value: http://localhost:3000
+
+  - type: web
+    name: sample-mflix-client
+    runtime: node
+    plan: free
+    rootDir: sample-app-nodejs-mflix/client
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 22.16.0
+      - key: NODE_ENV
+        value: production
+      - key: NEXT_PUBLIC_API_URL
+        fromService:
+          type: web
+          name: sample-mflix-api
+          property: host
